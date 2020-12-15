@@ -1,0 +1,499 @@
+{
+	"info": {
+		"_postman_id": "5e2cc7de-b54b-4cda-bef9-a676f574f5ab",
+		"name": "comandas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "cristian",
+							"type": "text"
+						},
+						{
+							"key": "apellido",
+							"value": "zanoni",
+							"type": "text"
+						},
+						{
+							"key": "puesto",
+							"value": "mozo",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "9999",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://zanonicintiaprog3.000webhostapp.com/comandas/public/users/usuario",
+					"protocol": "https",
+					"host": [
+						"zanonicintiaprog3",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e401cef5-3c1b-423b-9227-1d28b94aba13",
+						"exec": [
+							"var token =pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"access_token\",token.data);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "apellido",
+							"value": "jey",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1212",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://zanonicintiaprog3.000webhostapp.com/comandas/public/users/login",
+					"protocol": "https",
+					"host": [
+						"zanonicintiaprog3",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cargarComanda",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cliente",
+							"value": "cin",
+							"type": "text"
+						},
+						{
+							"key": "bebida",
+							"value": "ipa",
+							"type": "text"
+						},
+						{
+							"key": "plato",
+							"value": "lomito",
+							"type": "text"
+						},
+						{
+							"key": "candy",
+							"value": "helado",
+							"type": "text"
+						},
+						{
+							"key": "tiempo_preparacion",
+							"value": "40'",
+							"type": "text"
+						},
+						{
+							"key": "importe",
+							"value": "1200",
+							"type": "text"
+						},
+						{
+							"key": "codigo",
+							"value": "PE120",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/comandas/public/users/comanda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"comanda"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detalleComanda",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "idComanda",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "ProdID",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "codigo_empleado",
+							"value": "14",
+							"type": "text"
+						},
+						{
+							"key": "tiempo",
+							"value": "25",
+							"type": "text"
+						},
+						{
+							"key": "cantidad",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://zanonicintiaprog3.000webhostapp.com/comandas/public/users/detalle",
+					"protocol": "https",
+					"host": [
+						"zanonicintiaprog3",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"detalle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pendientes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigo",
+							"value": "15",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/comandas/public/users/pendientes/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"pendientes",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modificaProducto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://zanonicintiaprog3.000webhostapp.com/comandas/public/users/modificaProducto/8",
+					"protocol": "https",
+					"host": [
+						"zanonicintiaprog3",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"modificaProducto",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cambiarEstadoPedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "estado",
+							"value": "listo para servir",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://zanonicintiaprog3.000webhostapp.com/comandas/public/users/estadoPedido/2",
+					"protocol": "https",
+					"host": [
+						"zanonicintiaprog3",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"estadoPedido",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cierreMesa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "estado",
+							"value": "cerrada",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://zanonicintiaprog3.000webhostapp.com/comandas/public/users/cierreMesa/2",
+					"protocol": "https",
+					"host": [
+						"zanonicintiaprog3",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"cierreMesa",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todosLosPedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://zanonicintiaprog3.000webhostapp.com/comandas/public/users/pedidos",
+					"protocol": "https",
+					"host": [
+						"zanonicintiaprog3",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "completarEncuesta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "mesa",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "restaurante",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "mozo",
+							"value": "8",
+							"type": "text"
+						},
+						{
+							"key": "cocinero",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "excelente servicio y buenos precios. recomendable",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://zanonicintiaprog3.000webhostapp.com/comandas/public/users/encuesta",
+					"protocol": "https",
+					"host": [
+						"zanonicintiaprog3",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"encuesta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mostrarEncuestas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://zanonicintiaprog3.000webhostapp.com/comandas/public/users/mostrarEncuestas",
+					"protocol": "https",
+					"host": [
+						"zanonicintiaprog3",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"mostrarEncuestas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mostrarEmpleadosActivos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://zanonicintiaprog3.000webhostapp.com/comandas/public/users/mostrarEmpleadosActivos",
+					"protocol": "https",
+					"host": [
+						"zanonicintiaprog3",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"comandas",
+						"public",
+						"users",
+						"mostrarEmpleadosActivos"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
